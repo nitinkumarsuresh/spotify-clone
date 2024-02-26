@@ -1,13 +1,72 @@
-body {
+
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,700;0,800;1,100;1,200;1,300;1,400;1,600;1,700;1,800&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+  list-style: none;
+  font-family: "Poppins", sans-serif;
+  
+}
+body {
+  background-color: #000;
+  color: #fff;
+  scroll-behavior: smooth;
+}
+html{
+  font-size: 90%;
+}
+:root {
+  --secondary_bg: #181818;
+  --card_sec_bg: #1212125e;
+  --tertiary_bg: #121212;
+  --card_bg: #303030;
+}
+.secondary_bg {
+  background: var(--secondary_bg);
+}
+.secondary_bgg {
+  background-color: #ffffff11;
+}
+.tertiary_bg {
+  background: var(--tertiary_bg);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Scrollbar Thumb */
+::-webkit-scrollbar-thumb {
+  background-color: #ffffff75;
+  width: 8px;
+}
+
+/* Scrollbar Track on Firefox */
+::-moz-scrollbar-track {
+  background-color: #ffffff75;
+  width: 8px;
+}
+
+/* Scrollbar Thumb on Firefox */
+::-moz-scrollbar-thumb {
+  background-color: #ffffff75;
+  width: 8px;
+}
+
+/* Scrollbar Track on Internet Explorer and Microsoft Edge */
+::-ms-scrollbar-track {
+  background-color: #ffffff75;
+  width: 8px;
+}
+
+/* Scrollbar Thumb on Internet Explorer and Microsoft Edge */
+::-ms-scrollbar-thumb {
+  background-color: #ffffff75;
+  width: 8px;
+}
+
+html::-webkit-scrollbar {
+  appearance: none;
+  width: 12px;
 }

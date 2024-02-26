@@ -1,0 +1,32 @@
+input[type="range"] {
+    appearance: none;
+    width: 100%;
+    position: relative;
+    display: inline-block;
+    height: 4px;
+    border-radius: 5px;
+    background-color: #575757;
+}
+input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    border-radius: 50%;
+    opacity: 0;
+    z-index: 43;
+    position: relative;
+}
+input[type="range"]:hover::-webkit-slider-thumb {
+    opacity: 1;
+}
+.active_progress {
+    background-color: #fff;
+    height: 4px;
+    width: 0%;
+    position: absolute;
+    border-radius: 5px;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
