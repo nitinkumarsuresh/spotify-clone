@@ -11,7 +11,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { songs } from "./Home/Home";
 
 
-const Navbar = () => {
+const Navbar = ({setAuth}) => {
   
 
   
@@ -36,6 +36,7 @@ const Navbar = () => {
    };
   const [showDropDown, setShowDropDown] = useState(false);
   const navigate = useNavigate()
+  
 
   const logoutUser = () => {
 
@@ -43,6 +44,7 @@ const Navbar = () => {
       localStorage.removeItem('name')
       localStorage.removeItem('password')
       localStorage.removeItem('access')
+      setAuth(false)
       console.log("Logout success")
       navigate('/')
       

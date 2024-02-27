@@ -1,4 +1,4 @@
-import {  useState } from "react";
+import {  useEffect, useState } from "react";
 import { BiSolidHome, BiLibrary } from "react-icons/bi";
 import { FiSearch } from "react-icons/fi";
 import { FaPlus } from "react-icons/fa";
@@ -7,9 +7,11 @@ import "./Sidebar.css";
 import { Link } from "react-router-dom";
 import Signup from "./Signup";
 
-const Sidebar = () => {
+const Sidebar = ({auth}) => {
   const [playlists, setPlaylists] = useState([]);
   
+  const [value,setValue] = useState(localStorage.getItem("access"));
+
   
   
   return (
@@ -119,7 +121,7 @@ const Sidebar = () => {
         <span className="text-white font-bold">English</span>
       </button>
       
-      {localStorage.getItem("access")===null ? <div><Signup /></div>  : ""}
+      {!auth ? <div><Signup /></div>  : ""}
 
     </div>
   );

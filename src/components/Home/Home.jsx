@@ -10,6 +10,7 @@ import SongBar from "../MasterBar/SongBar";
 import Navbar from "../Navbar";
 
 import Footer from "../Footer/Footer";
+import {useState } from "react";
 
 export const songs = [
   {
@@ -58,10 +59,11 @@ export const songs = [
 
 const Home = () => {
 
+  const [auth,setAuth]=useState(localStorage.getItem("access")!==null);
   
   return (
-    <Layout>
-      <Navbar />
+    <Layout auth={auth}>
+      <Navbar setAuth={setAuth}/>
 
       <div className="tertiary_bg ml-2 px-4 py-4 home ">
         <div className="flex justify-between mb-4 pt-4 items-center">
@@ -88,7 +90,7 @@ const Home = () => {
         </div>
       </div>
       <Footer/>
-       <SongBar />
+        <SongBar />
     </Layout>
   );
 };
