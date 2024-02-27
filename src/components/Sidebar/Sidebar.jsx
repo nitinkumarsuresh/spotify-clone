@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { BiSolidHome, BiLibrary } from "react-icons/bi";
 import { FiSearch } from "react-icons/fi";
 import { FaPlus } from "react-icons/fa";
@@ -9,32 +9,9 @@ import Signup from "./Signup";
 
 const Sidebar = () => {
   const [playlists, setPlaylists] = useState([]);
-  const [check,setCheck]=useState(true)
-  console.log(localStorage.getItem("access"))
-  useEffect(()=>{
-    if (localStorage.getItem("access") === true)
-  {
-    setCheck(false)
-  }else{
-    setCheck(true)
-  }
-  },[localStorage.getItem("access")])
   
-  console.log(check+"jhgjugh")
-  // const getPlaylists = async () => {
-  //   const res = await fetch("http://137.184.81.218:5000/api/playlist/", {
-  //     method: "GET",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   });
-
-  //   let d = await res.json();
-  //   setPlaylists(d.playlists);
-  // };
-  // useEffect(() => {
-  //   getPlaylists();
-  // }, []);
+  
+  
   return (
     <div className="w-1/4 fixed left-0 mt-2 top-0 sidebar ">
       <div className="nav tertiary_bg rounded-lg p-6">

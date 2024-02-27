@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 
 import { AiOutlineHeart, AiOutlinePlaySquare } from "react-icons/ai";
 import { IoMdSkipBackward, IoMdSkipForward } from "react-icons/io";
@@ -8,12 +8,7 @@ import { FaPause, FaPlay } from "react-icons/fa";
 import { PiMicrophoneStageDuotone, PiQueueLight } from "react-icons/pi";
 import { HiSpeakerXMark, HiSpeakerWave } from "react-icons/hi2";
 import { BsArrowsAngleContract, BsSpeakerFill } from "react-icons/bs";
-// import {
-//     pauseMaster,
-//     playMaster,
-//     playSong,
-// } from "../../states/Actors/SongActor";
-// import { useGlobalContext } from "../../states/Contet";
+
 import "./SongBar.css";
 import { songs } from "../Home/Home";
 const SongBar = () => {

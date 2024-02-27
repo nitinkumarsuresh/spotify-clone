@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import {
   FaAngleLeft,
   FaAngleRight,
@@ -6,22 +6,21 @@ import {
   FaSearch,
   FaUser,
 } from "react-icons/fa";
-// import { useDispatch, useSelector } from "react-redux";
+
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { songs } from "./Home/Home";
-// import { useGlobalContext } from "../states/Contet";
-// import { logOutUser } from "../states/Actors/UserActor";
+
 
 const Navbar = () => {
-  const [isAuthenticated,setisAuthenticated] = useState(false)
+  
 
   
 
-  // const { isAuthenticated } = useSelector((state) => state.account);
+  
 
   const location = useLocation();
   const [query, setQuery] = useState("");
-  // const { setFilteredSongs } = useGlobalContext();
+  // const [filteredsongs,setFilteredSongs]=useState([]);
   const filterSongs = (e) => {
     setQuery(e.target.value);
     const fil = songs.filter((song) => {
@@ -31,12 +30,13 @@ const Navbar = () => {
       )
         return song;
     });
-  //   // if (e.target.value === "") setFilteredSongs([]);
-  //   // else setFilteredSongs(fil);
+  //   if (e.target.value === "") setFilteredSongs([]);
+  //   else setFilteredSongs(fil);
+
    };
   const [showDropDown, setShowDropDown] = useState(false);
   const navigate = useNavigate()
-  // const dispatch  = useDispatch()
+
   const logoutUser = () => {
 
       localStorage.removeItem('email')
@@ -44,8 +44,8 @@ const Navbar = () => {
       localStorage.removeItem('password')
       localStorage.removeItem('access')
       console.log("Logout success")
-      navigate('/login')
-      // dispatch(logOutUser())
+      navigate('/')
+      
   }
   return (
     <header className="flex sticky top-0 z-50 justify-between ml-2 rounded-[6px]  mt-2 px-8 secondary_bg items-center ">

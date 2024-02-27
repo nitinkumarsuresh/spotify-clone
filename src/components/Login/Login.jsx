@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import "./login.css";
 import { Link, useNavigate } from "react-router-dom";
 import { auth ,db} from "../firebase/Config";
@@ -13,17 +13,7 @@ const Login = () => {
     setUserDetails({ ...userDetails, [e.target.name]: e.target.value });
   };
 
-  // const submitt = () => {
-  //   if (
-  //     localStorage.getItem("email") === userDetails.email &&
-  //     localStorage.getItem("password") === userDetails.password
-  //   ) {
-  //     localStorage.setItem("access", true);
 
-  //     console.log("login succesful");
-  //     navigate("/");
-  //   }
-  // };
   const login = (e) => {
     e.preventDefault();
     const {email, password} = userDetails;
@@ -46,7 +36,7 @@ const Login = () => {
         console.error('Error fetching data:', error);
     });
     });
-        //navigate('/')
+        
 }
 
   return (
