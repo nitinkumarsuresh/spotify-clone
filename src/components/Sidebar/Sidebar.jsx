@@ -9,10 +9,9 @@ import Signup from "./Signup";
 
 const Sidebar = ({auth}) => {
   const [playlists, setPlaylists] = useState([]);
-  
+  const auth1  = localStorage.getItem("access")!==null;
+  console.log("auth1 "+auth1);
   const [value,setValue] = useState(localStorage.getItem("access"));
-
-  
   
   return (
     <div className="w-1/4 fixed left-0 mt-2 top-0 sidebar ">
@@ -121,7 +120,7 @@ const Sidebar = ({auth}) => {
         <span className="text-white font-bold">English</span>
       </button>
       
-      {!auth ? <div><Signup /></div>  : ""}
+      {(!auth1) && <div><Signup /></div>}
 
     </div>
   );
