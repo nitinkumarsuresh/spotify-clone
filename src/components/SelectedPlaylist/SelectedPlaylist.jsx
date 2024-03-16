@@ -1,4 +1,5 @@
 import { Box } from "@mui/material";
+import { FaPause, FaPlay } from "react-icons/fa";
 import { makeStyles } from "@mui/styles";
 import BackSVG from "../Images/BackSVG";
 import ForwardSVG from "../Images/ForwardSVG";
@@ -11,6 +12,7 @@ import Layout from "../../Layout/Layout";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SongBar from "../MasterBar/SongBar";
+import "./SelectedPlaylist.css";
 import { useState } from "react";
 import {
   
@@ -143,101 +145,124 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
+export const songs = [
+  {
+    id: Math.random() * Date.now(),
+    title: "Tum Hi Ho",
+    artist: "Arijit Singh",
+    mp3: new Audio("/assets/mp3/Tum Hi Ho.mp3"),
+    img: "/assets/Arijit-1.jpg",
+  },
+  {
+    id: Math.random() * Date.now(),
+    title: "Ae Dil Hai Mushkil",
+    artist: "Arijit Singh",
+    mp3: new Audio("/assets/mp3/ae.mp3"),
+    img: "/assets/Arijit-2.jpg",
+  },
+  {
+    id: Math.random() * Date.now(),
+    title: "Mirchi Awards",
+    artist: "Arijit Singh",
+    mp3: new Audio("/assets/mp3/Mashup.mp3"),
+    img: "/assets/Arijit-3.jpg",
+  },
+  {
+    id: Math.random() * Date.now(),
+    title: "Judaiyaan",
+    artist: "Arijit Singh",
+    mp3: new Audio("/assets/mp3/Judaiyaan.mp3"),
+    img: "/assets/Arijit-4.jpg",
+  },
+  
+  {
+    id: Math.random() * Date.now(),
+    title: "Tu hi Hai Aashiqui",
+    artist: "Arijit Singh",
+    mp3: new Audio("/assets/mp3/Tu Hi Hai Aashiqui.mp3"),
+    img: "/assets/Arijit-2.jpg",
+  },
+  {
+    id: Math.random() * Date.now(),
+    title: "Tum Hi Ho",
+    artist: "Arijit Singh",
+    mp3: new Audio("/assets/mp3/Tum Hi Ho.mp3"),
+    img: "/assets/Arijit-1.jpg",
+  },
+  {
+    id: Math.random() * Date.now(),
+    title: "Ae Dil Hai Mushkil",
+    artist: "Arijit Singh",
+    mp3: new Audio("/assets/mp3/ae.mp3"),
+    img: "/assets/Arijit-2.jpg",
+  },
+  {
+    id: Math.random() * Date.now(),
+    title: "Mirchi Awards",
+    artist: "Arijit Singh",
+    mp3: new Audio("/assets/mp3/Mashup.mp3"),
+    img: "/assets/Arijit-3.jpg",
+  },
+  {
+    id: Math.random() * Date.now(),
+    title: "Judaiyaan",
+    artist: "Arijit Singh",
+    mp3: new Audio("/assets/mp3/Judaiyaan.mp3"),
+    img: "/assets/Arijit-4.jpg",
+  },
+  
+  {
+    id: Math.random() * Date.now(),
+    title: "Tu hi Hai Aashiqui",
+    artist: "Arijit Singh",
+    mp3: new Audio("/assets/mp3/Tu Hi Hai Aashiqui.mp3"),
+    img: "/assets/Arijit-2.jpg",
+  },
+  {
+    id: Math.random() * Date.now(),
+    title: "Tum Hi Ho",
+    artist: "Arijit Singh",
+    mp3: new Audio("/assets/mp3/Tum Hi Ho.mp3"),
+    img: "/assets/Arijit-1.jpg",
+  },
+  {
+    id: Math.random() * Date.now(),
+    title: "Ae Dil Hai Mushkil",
+    artist: "Arijit Singh",
+    mp3: new Audio("/assets/mp3/ae.mp3"),
+    img: "/assets/Arijit-2.jpg",
+  },
+  {
+    id: Math.random() * Date.now(),
+    title: "Mirchi Awards",
+    artist: "Arijit Singh",
+    mp3: new Audio("/assets/mp3/Mashup.mp3"),
+    img: "/assets/Arijit-3.jpg",
+  },
+  {
+    id: Math.random() * Date.now(),
+    title: "Judaiyaan",
+    artist: "Arijit Singh",
+    mp3: new Audio("/assets/mp3/Judaiyaan.mp3"),
+    img: "/assets/Arijit-4.jpg",
+  },
+  
+  {
+    id: Math.random() * Date.now(),
+    title: "Tu hi Hai Aashiqui",
+    artist: "Arijit Singh",
+    mp3: new Audio("/assets/mp3/Tu Hi Hai Aashiqui.mp3"),
+    img: "/assets/Arijit-2.jpg",
+  },
+];
+
 function SelectedPlaylist() {
   const [alert,setAlert]=useState(false);
+  const [currentsong,setCurrentSong]=useState(null);
+  const [isPlaying, setIsPlaying] = useState(false);
   const navigate = useNavigate();
   const classes = useStyles();
-  const songName = [
-    "Shape of You",
-    "Despacito",
-    "Blinding Lights",
-    "Uptown Funk",
-    "Closer",
-    "Sicko Mode",
-    "Old Town Road",
-    "Thinking Out Loud",
-    "Bad Guy",
-    "Someone You Loved",
-    "Happy",
-    "Waka Waka",
-    "See You Again",
-    "Hello",
-    "All About That Bass",
-    "Sorry",
-    "What Do You Mean?",
-    "Shut Up and Dance",
-    "Perfect",
-    "'God's Plan'",
-    "Dance Monkey",
-    "Believer",
-    "Havana",
-    "Dark Horse",
-    "Roar",
-    "Counting Stars",
-    "Radioactive",
-    "Happier",
-    "Can't Stop the Feeling!",
-    "Faded",
-    "Rockstar",
-    "Stressed Out",
-    "Sunflower",
-    "Rain On Me",
-    "Watermelon Sugar",
-    "Circles",
-    "Don't Let Me Down",
-    "Wrecking Ball",
-    "Bad Romance",
-    "Royals",
-    "Taki Taki",
-    "Treat You Better",
-    "Hotline Bling",
-    "WAP",
-    "Shape of You",
-    "Despacito",
-    "Blinding Lights",
-    "Uptown Funk",
-    "Closer",
-    "Sicko Mode",
-    "Old Town Road",
-    "Thinking Out Loud",
-    "Bad Guy",
-    "Someone You Loved",
-    "Happy",
-    "Waka Waka",
-    "See You Again",
-    "Hello",
-    "All About That Bass",
-    "Sorry",
-    "What Do You Mean?",
-    "Shut Up and Dance",
-    "Perfect",
-    "God's Plan",
-    "Dance Monkey",
-    "Believer",
-    "Havana",
-    "Dark Horse",
-    "Roar",
-    "Counting Stars",
-    "Radioactive",
-    "Happier",
-    "Can't Stop the Feeling!",
-    "Faded",
-    "Rockstar",
-    "Stressed Out",
-    "Sunflower",
-    "Rain On Me",
-    "Watermelon Sugar",
-    "Circles",
-    "Don't Let Me Down",
-    "Wrecking Ball",
-    "Bad Romance",
-    "Royals",
-    "Taki Taki",
-    "Treat You Better",
-    "Hotline Bling",
-    "WAP",
-    
-  ];
+
   const albumNames = ["Leo", "Thuppaki", "Maari", "Theri", "Blue Star"];
 
   const dates = [
@@ -247,6 +272,35 @@ function SelectedPlaylist() {
     "2023-04-10",
     "2023-05-05",
   ];
+
+  const togglePlay = (song) => {
+    const audio =song.mp3;
+    if(currentsong=== null)
+    {
+      setCurrentSong(song);
+      audio.play();
+      setIsPlaying(true);
+      return;
+    }
+    if (song===currentsong)
+    {
+      if(isPlaying)
+      {
+        audio.pause();
+        setIsPlaying(false);
+      }else{
+        audio.play();
+        setIsPlaying(true);
+      }
+    }else{
+      currentsong.mp3.pause();
+      setCurrentSong(song);
+      audio.play();
+      setIsPlaying(true);
+    }
+
+
+  };
 
   const durations = ["3:45", "5:10", "4:30", "4:20", "3:55"];
 
@@ -346,24 +400,25 @@ function SelectedPlaylist() {
                 </tr>
               </thead>
               <tbody onClick={()=> setAlert(true)}>
-                {songName.map((name, index) => (
-                  <tr key={index} className={classes.songRow}>
+                {songs.map((song, index) => (
+                  <tr key={index} className={classes.songRow} onClick={()=>togglePlay(song)}>
                     <td
                       className={cn(classes.fontStyle, classes.songColumnValue)}
                     >
-                      {index + 1}
+                    <button  className="bg-green-500 p-2  rounded-full justify-center">{currentsong===song && isPlaying ? <FaPause className="text-black text-md" /> : <FaPlay className="text-black text-md" />}</button>
+                      
                     </td>
                     <td
                       style={{ display: "flex", gap: "10px" }}
                       className={cn(classes.fontStyle, classes.songColumnValue)}
                     >
                       <img
-                        src={playListImage}
+                        src={song.img}
                         alt="playListNamePic"
                         height={20}
                         width={30}
                       />
-                      {name}
+                      {song.title}
                     </td>
                     <td
                       className={cn(classes.fontStyle, classes.songColumnValue)}
@@ -391,7 +446,7 @@ function SelectedPlaylist() {
           </div>
         </div>
       </div>
-      {alert && <SongBar />}
+      {alert && <SongBar current={currentsong}  isPlaying={isPlaying} setIsPlaying={setIsPlaying} />}
     </Layout>
     
   );

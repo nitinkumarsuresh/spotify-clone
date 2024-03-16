@@ -3,6 +3,7 @@ import Layout from "../../Layout/Layout";
 import Card from "../Card/Card";
 
 import SongBar from "../MasterBar/SongBar";
+import { useEffect, useState } from "react";
 
 
 
@@ -10,7 +11,7 @@ import SongBar from "../MasterBar/SongBar";
 import Navbar from "../Navbar";
 
 import Footer from "../Footer/Footer";
-import {useState } from "react";
+
 
 export const songs = [
   {
@@ -41,13 +42,7 @@ export const songs = [
     mp3: new Audio("/assets/mp3/Judaiyaan.mp3"),
     img: "/assets/Arijit-4.jpg",
   },
-  {
-    id: Math.random() * Date.now(),
-    title: "Heeriye",
-    artist: "Arijit Singh",
-    mp3: new Audio("/assets/mp3/Heeriye.m4a"),
-    img: "/assets/Arijit-1.jpg",
-  },
+  
   {
     id: Math.random() * Date.now(),
     title: "Tu hi Hai Aashiqui",
@@ -57,10 +52,14 @@ export const songs = [
   },
 ];
 
-const Home = () => {
 
+
+const Home = () => {
+  const [currentsong,setCurrentSong]=useState(null);
   const [auth,setAuth]=useState(localStorage.getItem("access")!==null);
-  
+  useEffect(()=>{
+    console.log(currentsong);
+  },[currentsong])
   return (
     <Layout auth={auth}>
       <Navbar setAuth={setAuth}/>
@@ -74,7 +73,7 @@ const Home = () => {
         </div>
         <div className="grid  gap-6 grid-cols-5">
           {songs.map((song, i) => {
-            return <Card key={song.id} idx={i} song={song} />;
+            return <Card key={song.id} idx={i} song={song}  setcurrent={setCurrentSong} />;
           })}
         </div>
         <div className="flex justify-between my-4 items-center">
@@ -85,12 +84,12 @@ const Home = () => {
         </div>
         <div className="grid  gap-6 grid-cols-5">
           {songs.map((song, i) => {
-            return <Card key={song.id} idx={i} song={song} />;
+            return <Card key={song.id} idx={i} song={song} setcurrent={setCurrentSong} />;
           })}
         </div>
       </div>
       <Footer/>
-        <SongBar />
+        <SongBar current={currentsong} />
     </Layout>
   );
 };

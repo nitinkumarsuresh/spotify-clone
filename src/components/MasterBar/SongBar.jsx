@@ -10,12 +10,21 @@ import { HiSpeakerXMark, HiSpeakerWave } from "react-icons/hi2";
 import { BsArrowsAngleContract, BsSpeakerFill } from "react-icons/bs";
 
 import "./SongBar.css";
-import { songs } from "../Home/Home";
-const SongBar = () => {
+
+const SongBar = ({current,isPlaying,setIsPlaying}) => {
     
-   const isPlaying = useState(true);
+   
     
-       
+    const handlechange =()=>{
+        if(isPlaying){
+            current.mp3.pause();
+            
+        }else{
+            current.mp3.play();
+            
+        }
+        setIsPlaying(!isPlaying);
+    }
     
    
     const mouseEnter = () => {
@@ -36,13 +45,13 @@ const SongBar = () => {
         <div className="fixed w-full flex px-2 items-center justify-between bottom-0 left-0 h-20 bg-black">
             <div className="w-2/12">
                 <div className="flex items-center gap-2">
-                    <img src={ "/assets/Arijit-1.jpg"} alt="" className="h-12" />
+                    <img src={current ? current.img : "/assets/Arijit-1.jpg"} alt="" className="h-12" />
                     <div>
                         <h3 className="text-xs font-medium mb-1">
-                            { "Arijit Singh"}
+                            { current ? current.title : "Arijit Singh"}
                         </h3>
                         <span className="text-[10px]">
-                            { "Arijit Singh"}
+                        { current ? current.artist : "Arijit Singh"}
                         </span>
                     </div>
                     <AiOutlineHeart  className="ml-3 cursor-pointer hover:text-green-400" />
@@ -53,16 +62,16 @@ const SongBar = () => {
                 <div className="flex justify-center items-center mb-2 gap-6">
                     <BiShuffle />
                     <IoMdSkipBackward  />
-                    {!isPlaying ? (
+                    {isPlaying ? (
                         <button
-                            
+                            onClick={handlechange}
                             className="flex items-center rounded-[50%] bg-white justify-center p-2"
                         >
                             <FaPause className="text-black text-lg" />
                         </button>
                     ) : (
                         <button
-                            
+                        onClick={handlechange}
                             className="flex items-center rounded-[50%] bg-white justify-center p-2"
                         >
                             <FaPlay className="text-black text-lg" />
